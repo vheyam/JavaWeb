@@ -12,6 +12,12 @@
         <title>Menu</title>
     </head>
     <body>
+        <%
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
+        
         <form action="MenuServlet" method="get">
             <input type="submit" name="button" value="New patient"><br><br>
             <input type="submit" name="button" value="Show patients"><br><br>

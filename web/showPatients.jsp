@@ -12,8 +12,14 @@
         <title>show patients</title>
     </head>
     <body>
-        <h1>show patients</h1>
+        <%
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
         
+        
+        <h1>show patients</h1>
         
         <form action="ShowPatientsServlet" method="get">
             <input type="submit" name="button" value="Back"><br><br>

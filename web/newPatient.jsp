@@ -12,6 +12,12 @@
         <title>new patient</title>
     </head>
     <body>
+        <%
+            if (session.getAttribute("username") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
+        
         <h1>new patient</h1>
         
         <form action="NewPatientServlet" method="get">

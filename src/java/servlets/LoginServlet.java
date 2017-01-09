@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.PageContext;
 
 /**
@@ -40,6 +41,8 @@ public class LoginServlet extends HttpServlet {
             
             // Goood credentials give access
             if(username.equals("username") && password.equals("password")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("username", username);
                 RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
                 rd.forward(request, response);
             }
