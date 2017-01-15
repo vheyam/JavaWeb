@@ -17,7 +17,7 @@
         <%
             session.invalidate();
         %>
-        <h1>You are sucessfully logged out...</h1>
+        <h2>You are sucessfully logged out...</h2>
         <a href="index.jsp">Go back to home page</a>
     </body>
 </html>
