@@ -1,7 +1,7 @@
 <%-- 
-    Document   : newPatient
-    Created on : Jan 9, 2017, 11:40:37 PM
-    Author     : Rolandas
+    Document   : logoutprocess
+    Created on : 10-Jan-2017, 21:21:39
+    Author     : AbuIlyas
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,15 +20,9 @@
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
             
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>New Patient</title>
+        <title>Logout</title>
     </head>
     <body>
-        <%
-            if (session.getAttribute("username") == null) {
-                response.sendRedirect("login.jsp");
-            }
-        %>
-        
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 
@@ -50,24 +44,24 @@
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Home</a></li>
                         <li><a href="showPatients.jsp">New Patient</a></li>
-                        <li class="active"><a href="newPatient.jsp">Show Patients</a></li>  
+                        <li><a href="newPatient.jsp">Show Patients</a></li>  
                     </ul>
                     
                     <!-- Right items -->
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="login.jsp">Login</a></li>
-                        <li><a href="logout.jsp">Logout</a></li>
+                        <li class="active"><a href="logout.jsp">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         
         <div class="container">
-            <h1>new patient</h1>
-        
-            <form action="NewPatientServlet" method="get">
-                <input type="submit" name="button" value="Back"><br><br>
-            </form>
+            <%
+                session.invalidate();
+            %>
+            <h1>You are sucessfully logged out...</h1>
+            <a href="index.jsp">Go back to home page</a>
         </div>
 
     </body>
