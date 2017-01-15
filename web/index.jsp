@@ -18,6 +18,8 @@
             Password: <input type="password" name="password"><br>
             <input type="submit" name="button" value="login">
         </form>
+        <form method="link" action="logoutprocess.jsp"><br><br><br><br>
+        <input type="submit" value="Logout" align="right">
         
         <%
            if (null != request.getAttribute("errorMessage")) {
