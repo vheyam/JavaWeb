@@ -6,9 +6,11 @@
 package beans;
 
 import hibernate.util.HibernateUtil;
+import java.util.List;
 import javax.ejb.Stateless;
 import objects.Patient;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -21,7 +23,7 @@ public class PatientBean {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    public void addPatient(String firstname, String lastname, String phone, String email,
+    public boolean addPatient(String firstname, String lastname, String phone, String email,
             String birthdate, String symptoms, String matter) {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -39,8 +41,52 @@ public class PatientBean {
             session.save(p);
             
             session.getTransaction().commit();
+            
+            session.flush();
+            session.close();
+            return true;
         } catch (HibernateException he) {
             he.printStackTrace();
+            return false;
+        }
+    }
+    
+    public List getPatientList() {
+        List list = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            
+            Query q = session.createQuery("from Patient");
+            list = q.list();
+                 
+            session.flush();
+            session.close();
+        } catch(HibernateException he) {
+            he.printStackTrace();
+        }
+        return list;
+    }
+    
+    // returns: if okay > true, if not okay > false.
+    public boolean removePatientById(int id) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            
+            Patient patient = new Patient();
+            patient.setId(id);
+            
+            session.delete(patient);
+            
+            session.getTransaction().commit();
+            
+            session.flush();
+            session.close();
+            return true;
+        } catch(HibernateException he) {
+            he.printStackTrace();
+            return false;
         }
     }
 }
