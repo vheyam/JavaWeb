@@ -38,11 +38,13 @@ public class Patient {
     private String symptoms;
     @Column(name = "Matter")
     private String matter;
+    @Column(name = "IsScheduled")
+    private boolean isScheduled;
 
     public Patient() {
     }
 
-    public Patient(String firstname, String lastname, String birthdate, String phone, String email, String symptoms, String matter) {
+    public Patient(String firstname, String lastname, String birthdate, String phone, String email, String symptoms, String matter, boolean isScheduled) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.birthdate = birthdate;
@@ -50,6 +52,7 @@ public class Patient {
         this.email = email;
         this.symptoms = symptoms;
         this.matter = matter;
+        this.isScheduled = isScheduled;
     }
 
     public int getId() {
@@ -114,6 +117,14 @@ public class Patient {
 
     public void setMatter(String matter) {
         this.matter = matter;
+    }
+
+    public boolean getIsScheduled() {
+        return isScheduled;
+    }
+
+    public void setIsScheduled(boolean isScheduled) {
+        this.isScheduled = isScheduled;
     }
     
 }

@@ -16,6 +16,10 @@
         <servlet-name>ShowPatientsServlet</servlet-name>
         <servlet-class>servlets.ShowPatientsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ScheduleServlet</servlet-name>
+        <servlet-class>servlets.ScheduleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ShowPatientsServlet</servlet-name>
         <url-pattern>/ShowPatientsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ScheduleServlet</servlet-name>
+        <url-pattern>/ScheduleServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

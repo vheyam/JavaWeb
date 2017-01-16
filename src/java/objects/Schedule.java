@@ -24,6 +24,8 @@ public class Schedule {
     
     @Column(name = "Id")
     private int id;
+    @Column(name = "Date")
+    private String date;
     @Column(name = "eightToNine")
     private int eightToNine;
     @Column(name = "nineToTen")
@@ -40,7 +42,8 @@ public class Schedule {
     public Schedule() {
     }
 
-    public Schedule(int eightToNine, int nineToTen, int tenToEleven, int elevenToTwelve, int thirteenToFourteen, int fourteenToFifteen) {
+    public Schedule(String date, int eightToNine, int nineToTen, int tenToEleven, int elevenToTwelve, int thirteenToFourteen, int fourteenToFifteen) {
+        this.date = date;
         this.eightToNine = eightToNine;
         this.nineToTen = nineToTen;
         this.tenToEleven = tenToEleven;
@@ -56,7 +59,15 @@ public class Schedule {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public String getDate() {
+        return date;
+    }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
     public int getEightToNine() {
         return eightToNine;
     }

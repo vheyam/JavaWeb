@@ -37,6 +37,7 @@ public class PatientBean {
             p.setBirthdate(birthdate);
             p.setSymptoms(symptoms);
             p.setMatter(matter);
+            p.setIsScheduled(false);
             
             session.save(p);
             
@@ -88,5 +89,23 @@ public class PatientBean {
             he.printStackTrace();
             return false;
         }
+    }
+    
+    public Patient getPatientDataFromId(int id) {
+        Patient patient = new Patient();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            
+            patient = (Patient) session.get(Patient.class, id);
+  
+            session.getTransaction().commit();
+            
+            session.flush();
+            session.close();
+        } catch(HibernateException he) {
+            he.printStackTrace();
+        }
+        return patient;
     }
 }

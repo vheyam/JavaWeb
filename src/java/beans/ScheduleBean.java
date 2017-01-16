@@ -23,13 +23,14 @@ public class ScheduleBean {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    public boolean addSchedule(int eightToNine, int nineToTen, int tenToEleven, int elevenToTwelve,
+    public boolean addSchedule(String date, int eightToNine, int nineToTen, int tenToEleven, int elevenToTwelve,
             int thirteenToFourteen, int fourteenToFifteen) {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             
             Schedule s = new Schedule();
+            s.setDate(date);
             s.setEightToNine(eightToNine);
             s.setNineToTen(nineToTen);
             s.setTenToEleven(tenToEleven);

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menu
-    Created on : Jan 9, 2017, 11:40:08 PM
+    Document   : schedulePatient
+    Created on : Jan 16, 2017, 8:11:06 PM
     Author     : Rolandas
 --%>
 
@@ -18,26 +18,19 @@
  
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-            
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
+        <title>Schedule Patients</title>
     </head>
     <body>
-        <%
-            if (session.getAttribute("username") == null) {
-                response.sendRedirect("index.jsp");
-            }
-        %>
-        
         <!-- Including the navigation bar -->   
         <jsp:include page="navBar.jsp"/>
         
         <div class="container">
-            <form action="MenuServlet" method="get">
-                <input type="submit" name="button" value="New patient"><br><br>
-                <input type="submit" name="button" value="Show patients"><br><br>
-            </form>
+            
+            <!-- Including the date picker jsp-->
+            <jsp:include page="datePicker.jsp"/>
+            
         </div>
-        
     </body>
 </html>
