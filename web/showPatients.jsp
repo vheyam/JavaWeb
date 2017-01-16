@@ -4,6 +4,8 @@
     Author     : Rolandas
 --%>
 
+<%@page import="objects.Patient"%>
+<%@page import="beans.PatientBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,7 @@
             accesskey=""   integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- 
+        
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
             
@@ -40,8 +42,6 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span> 
                     </button>
-                    
-                    
                     <a href="#" class="navbar-brand">PRS</a>
                 </div>
                 
@@ -49,8 +49,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Home</a></li>
-                        <li class="active"><a href="showPatients.jsp">New Patient</a></li>
-                        <li><a href="newPatient.jsp">Show Patients</a></li>  
+                        <li><a href="newPatient.jsp">New Patient</a></li>
+                        <li class="active"><a href="showPatients.jsp">Show Patients</a></li>  
                     </ul>
                     
                     <!-- Right items -->
@@ -62,13 +62,69 @@
             </div>
         </nav>
            
-        <div class="container">
-            <h1>show patients</h1>
+     
         
-            <form action="ShowPatientsServlet" method="get">
-                <input type="submit" name="button" value="Back"><br><br>
-            </form>
+        <div class="container">
+            <h3 class="text-center">Patients</h3>      
+            
+            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+            <!-- Table is responsive, on smaller screens it will look alright.-->
+            <div class="table-responsive">
+                <table class="table table-hover" data-toggle="table">
+                    <thead>
+                        <tr>
+                            <th data-sortable="true">Id</th>
+                            <th data-sortable="true">First name</th>
+                            <th data-sortable="true">Last name</th>
+                            <th data-sortable="true">Birth date</th>   
+                            <th data-sortable="true">Phone number</th> 
+                            <th data-sortable="true">Email</th> 
+                            <th data-sortable="true">Symptoms</th> 
+                            <th data-sortable="true">Matter</th> 
+                            <th>Remove</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <%
+                            PatientBean pb = new PatientBean();
+                            for (Object obj : pb.getPatientList()) {
+                                Patient p = (Patient) obj;
+                        %>
+                        <tr>
+                            <td><%= p.getId() %> </td>
+                            <td><%= p.getFirstname() %></td>
+                            <td><%= p.getLastname() %></td>
+                            <td><%= p.getBirthdate() %></td>
+                            <td><%= p.getPhone() %></td>
+                            <td><%= p.getEmail() %></td>
+                            <td><%= p.getSymptoms() %></td>
+                            <td><%= p.getMatter() %></td>
+                            <td>
+                                <form action="ShowPatientsServlet" method="get">
+                                    <button type="submit" name="button" class="btn btn-danger" value=<%= p.getId() %> ></button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pops alert if delete went wrong-->
+            <%
+            if (request.getAttribute("errorDelete") != null) {
+                %>
+                <div class="alert alert-warning alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Warning!</strong> Error while deleting patient.
+                </div>
+                <%
+            }
+            %>          
+                    
         </div>
-  
+        
     </body>
 </html>

@@ -33,9 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span> 
-                    </button>
-                    
-                    
+                    </button>                   
                     <a href="#" class="navbar-brand">PRS</a>
                 </div>
                 
@@ -43,8 +41,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Home</a></li>
-                        <li><a href="showPatients.jsp">New Patient</a></li>
-                        <li><a href="newPatient.jsp">Show Patients</a></li>  
+                        <li><a href="newPatient.jsp">New Patient</a></li>
+                        <li><a href="showPatients.jsp">Show Patients</a></li>  
                     </ul>
                     
                     <!-- Right items -->
