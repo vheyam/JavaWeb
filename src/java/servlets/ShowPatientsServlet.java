@@ -6,12 +6,12 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import beans.PatientBean;
 
 /**
  *
@@ -32,9 +32,19 @@ public class ShowPatientsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String button = request.getParameter("button");
-        if ("Back".equals(button)) {
-            RequestDispatcher rd = request.getRequestDispatcher("/menu.jsp");
+        request.removeAttribute("errorDelete");
+        String idToDelete = request.getParameter("button");
+        PatientBean pb = new PatientBean();
+
+        boolean delete = pb.removePatientById(Integer.parseInt(idToDelete));
+      
+        if (delete == true) {
+            RequestDispatcher rd = request.getRequestDispatcher("/showPatients.jsp");
+            rd.forward(request, response);
+        }
+        else {
+            request.setAttribute("errorDelete", "Error while deleting");
+            RequestDispatcher rd = request.getRequestDispatcher("/showPatients.jsp");
             rd.forward(request, response);
         }
     }

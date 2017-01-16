@@ -7,14 +7,12 @@ package servlets;
 
 import beans.PersonBean;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
 import objects.Person;
 
 /**
@@ -42,18 +40,18 @@ public class LoginServlet extends HttpServlet {
             String password = request.getParameter("password");
             
             PersonBean person = new PersonBean();
-            boolean valid;
+            boolean valid = false;
             
             for (Object obj : person.getPersonList()) {
                 Person p = (Person) obj;
                 if (username.equals(p.getUsername()) && password.equals(p.getPassword())) {
                     valid = true;
+                    break;
                 }
                 else {
-                    valid = false;
-                    
+                    valid = false;         
+                }
             }
-            
             // Goood credentials give access
             if(valid == true) {
                 HttpSession session = request.getSession();
@@ -64,10 +62,9 @@ public class LoginServlet extends HttpServlet {
             else {
                 // wrong credentials print message
                 request.setAttribute("errorMessage", "Wrong credentials");
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
                 rd.forward(request, response);
             }
-        }
     }
 }
 

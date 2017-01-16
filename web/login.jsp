@@ -23,7 +23,7 @@
         <title>Login</title>
     </head>
     <body>
-                <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 
                 <!-- Logo -->
@@ -33,9 +33,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span> 
-                    </button>
-                    
-                    
+                    </button>                   
                     <a href="#" class="navbar-brand">PRS</a>
                 </div>
                 
@@ -43,8 +41,8 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li><a href="index.jsp">Home</a></li>
-                        <li><a href="showPatients.jsp">New Patient</a></li>
-                        <li><a href="newPatient.jsp">Show Patients</a></li>  
+                        <li><a href="newPatient.jsp">New Patient</a></li>
+                        <li><a href="showPatients.jsp">Show Patients</a></li>  
                     </ul>
                     
                     <!-- Right items -->
@@ -59,14 +57,19 @@
         <div class="container">
             <form action="LoginServlet" method="get">
             <h1>Enter your credentials</h1>
-            Username: <input type="text" name="username"><br>
-            Password: <input type="password" name="password"><br>
-            <input type="submit" name="button" value="login">
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <input type="submit" name="button" value="login" class="btn btn-primary">
             </form>
-        
+            
             <%
-            if (null != request.getAttribute("errorMessage")) {
-                out.println(request.getAttribute("errorMessage"));
+            if (null != request.getAttribute("errorMessage")) {            
+                %>
+                <div class="alert alert-warning alert-dismissable fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Warning!</strong> Wrong credentials.
+                </div>
+                <% 
             } 
             %>
         </div>

@@ -41,7 +41,7 @@ public class PatientBean {
             session.save(p);
             
             session.getTransaction().commit();
-            
+
             session.flush();
             session.close();
             return true;
@@ -59,7 +59,7 @@ public class PatientBean {
             
             Query q = session.createQuery("from Patient");
             list = q.list();
-                 
+            
             session.flush();
             session.close();
         } catch(HibernateException he) {
