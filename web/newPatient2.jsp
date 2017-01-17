@@ -149,7 +149,7 @@ out.println(request.getParameter("status"));
                           <tr>
                             <td><span class="style11 style6"><strong>Birthdate</strong></span></td>
                 <td><input type="text" name="birthdate" readonly/>
-                  <a href="javascript:show_calendar('document.register.bdate', document.register.birthdate.value);"> <img src="images/cal.gif" alt="a" width="18" height="18" border="0"/></a> </td>
+                  <a href="javascript:show_calendar('document.register.birthdate', document.register.birthdate.value);"> <img src="images/cal.gif" alt="a" width="18" height="18" border="0"/></a> </td>
               </tr>
                           
                                       
