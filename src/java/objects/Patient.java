@@ -28,16 +28,26 @@ public class Patient {
     private String firstname;
     @Column(name = "Lastname")
     private String lastname;
-    @Column(name = "Birthdate")
-    private String birthdate;
+    @Column(name = "Street")
+    private String street;
+    @Column(name ="Postcode")
+    private String postcode;
+    @Column(name = "Ort")
+    private String ort;
     @Column(name = "Phone")
     private String phone;
     @Column(name = "Email")
     private String email;
+    @Column(name = "Birthdate")
+    private String birthdate;
     @Column(name = "Symptoms")
     private String symptoms;
     @Column(name = "Bloodgroup")
     private String bloodgroup;
+    @Column(name = "Weight")
+    private String weight;
+    @Column(name = "Height")
+    private String height;
     @Column(name = "Matter")
     private String matter;
     @Column(name = "IsScheduled")
@@ -46,14 +56,19 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(String firstname, String lastname, String birthdate, String phone, String email, String symptoms, String bloodgroup, String matter, boolean isScheduled) {
+    public Patient(String firstname, String lastname, String street, String postcode, String ort, String phone, String email, String birthdate, String symptoms, String bloodgroup, String weight, String height, String matter, boolean isScheduled) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthdate = birthdate;
+        this.street = street;
+        this.postcode = postcode;
+        this.ort = ort;
         this.phone = phone;
         this.email = email;
+        this.birthdate = birthdate;
         this.symptoms = symptoms;
         this.bloodgroup = bloodgroup;
+        this.weight = weight;
+        this.height = height;
         this.matter = matter;
         this.isScheduled = isScheduled;
     }
@@ -84,14 +99,31 @@ public class Patient {
         this.lastname = lastname;
     }
 
-    public String getBirthdate() {
-        return birthdate;
+    public String getStreet() {
+        return street;
     }
 
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getOrt() {
+        return ort;
+    }
+
+    public void setOrt(String ort) {
+        this.ort = ort;
+    }
+
+   
     public String getPhone() {
         return phone;
     }
@@ -106,6 +138,14 @@ public class Patient {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+     public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getSymptoms() {
@@ -123,7 +163,23 @@ public class Patient {
     public void setBloodgroup(String bloodgroup) {
         this.bloodgroup = bloodgroup;
     }
-     
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+        
     public String getMatter() {
         return matter;
     }
