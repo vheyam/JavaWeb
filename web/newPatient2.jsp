@@ -97,8 +97,8 @@ body {
             </p>
                   <div align="center"><strong>Register Form</strong>                               </div>
                   <ol>
-                    <li>
-                      <form action="RegisterAction.jsp" method="post" name="register">
+                    
+                      <form action="NewPatientServlet" method="get" name="register">
                         
                         <table border="0" align="center">
                           <% if(request.getParameter("status")!=null)
@@ -107,40 +107,74 @@ out.println(request.getParameter("status"));
 }
 %>
                           <tr>
-                            <td><span class="style11 style6"><strong>First Name </strong></span></td>
-                <td><input type="text" name="fname" class="textfield"/>    </td>
+                            <td><span class="style11 style6"><strong>First Name</strong></span></td>
+                <td><input type="text" name="firstname" class="textfield"/>    </td>
               </tr>
                           <tr>
-                            <td><span class="style11 style6"><strong>Last Name </strong></span></td>
-                <td><input type="text" name="lname" class="textfield"/>    </td>
+                            <td><span class="style11 style6"><strong>Last Name</strong></span></td>
+                <td><input type="text" name="lastname" class="textfield"/>    </td>
               </tr>
+              
                           <tr>
-                            <td><span class="style11 style6"><strong>Birth Date </strong></span></td>
-                <td><input type="text" name="bdate" readonly/>
-                  <a href="javascript:show_calendar('document.register.bdate', document.register.bdate.value);"> <img src="images/cal.gif" alt="a" width="18" height="18" border="0"/></a> </td>
+                            <td class="style11"><span class="style6"><strong>Street</strong></span></td>
+                <td><input type="text" name="street" class="textfield"/></td>
               </tr>
+                          
+                          <tr>
+                            <td  class="style11"><span class="style6"><strong>Post Code</strong></span></td>
+                <td><input type="text" name="postcode" class="textfield"/></td>
+              </tr>  
+              
                           <tr>
                             <td><span class="style11 style6"><strong>Ort</strong></span></td>
                 <td><select name="ort">
                 <option>select</option>
                   <option>Kristianstad</option>
                   <option>Ahus</option>
-                  <option>Åhus</option>
+                  <option>Norra Asum</option>
                   <option>Önnestad</option>
                   </select>    </td>
               </tr>
+              
                           <tr>
-                            <td  class="style11"><span class="style6"><strong>Pincode</strong></span></td>
-                <td><input type="text" name="pincode" class="textfield"/></td>
+                            <td><span class="style11 style6"><strong>Birthdate</strong></span></td>
+                <td><input type="text" name="birthdate" readonly/>
+                  <a href="javascript:show_calendar('document.register.bdate', document.register.birthdate.value);"> <img src="images/cal.gif" alt="a" width="18" height="18" border="0"/></a> </td>
               </tr>
+                          
                           <tr>
-                            <td class="style11"><span class="style6"><strong>Contact No</strong></span></td>
-                <td><input type="text" name="phoneno" class="textfield"/></td>
+                            <td><span class="style11 style6"><strong>Phone</strong></span></td>
+                <td><input type="text" name="phone" class="textfield"/>    </td>
               </tr>
+              
                           <tr>
                             <td class="style11"><span class="style6"><strong>Email</strong></span></td>
                 <td><input type="text" name="email" class="textfield"/></td>
+              </tr>       
+              
+                          <tr>
+                            <td class="style11"><span class="style6"><strong>Symptoms</strong></span></td>
+                <td><input type="text" name="symptoms" class="textfield"/></td>
+              </tr>  
+              
+                          <tr>
+                            <td class="style11"><span class="style6"><strong>Bloodgroup</strong></span></td>
+                <td><input type="text" name="bloodgroup" class="textfield"/></td>
               </tr>
+              
+                          <tr>
+                            <td class="style11"><span class="style6"><strong>Weight</strong></span></td>
+                <td><input type="text" name="weight" class="textfield"/></td>
+              </tr>
+              
+                          <tr>
+                            <td class="style11"><span class="style6"><strong>Height</strong></span></td>
+                <td><input type="text" name="height" class="textfield"/></td>
+              </tr>
+              
+                           
+                          
+                          
                           <tr>
                             <td><span class="style11 style6"><strong>Login Name</strong></span></td>
                 <td><input type="text" name="loginname" />    </td>
@@ -192,15 +226,15 @@ out.println(request.getParameter("status"));
   var frmvalidator  = new Validator("register");
   
  
-  frmvalidator.addValidation("fname","req","Please enter your First Name");
-  frmvalidator.addValidation("fname","maxlen=20",	"Max length for FirstName is 20");
-  frmvalidator.addValidation("fname","alpha"," First Name Alphabetic chars only");
+  frmvalidator.addValidation("firstname","req","Please enter your First Name");
+  frmvalidator.addValidation("firstname","maxlen=20",	"Max length for FirstName is 20");
+  frmvalidator.addValidation("firstname","alpha"," First Name Alphabetic chars only");
   
-  frmvalidator.addValidation("lname","req","Please enter your Last Name");
-  frmvalidator.addValidation("lname","maxlen=20","Max length is 20");
-  frmvalidator.addValidation("lname","alpha"," Last Name Alphabetic chars only");
+  frmvalidator.addValidation("lastname","req","Please enter your Last Name");
+  frmvalidator.addValidation("lastname","maxlen=20","Max length is 20");
+  frmvalidator.addValidation("lastname","alpha"," Last Name Alphabetic chars only");
   
-  frmvalidator.addValidation("bdate","req","Please enter your DOB"); 
+  frmvalidator.addValidation("birthdate","req","Please enter your DOB"); 
   
    frmvalidator.addValidation("ort","dontselect=0");
    
@@ -208,11 +242,11 @@ out.println(request.getParameter("status"));
    
    frmvalidator.addValidation("pin","req","Please enter your pin Number");
     frmvalidator.addValidation("fax","age");
-     frmvalidator.addValidation("phoneno","req");
+     frmvalidator.addValidation("phone","req");
   
-  frmvalidator.addValidation("phoneno","maxlen=50");
-  frmvalidator.addValidation("phoneno","numeric");
- frmvalidator.addValidation("phoneno","Phone");
+  frmvalidator.addValidation("phone","maxlen=50");
+  frmvalidator.addValidation("phone","numeric");
+ frmvalidator.addValidation("phone","Phone");
   frmvalidator.addValidation("email","maxlen=50");
   frmvalidator.addValidation("email","req");
   frmvalidator.addValidation("email","email");
@@ -227,29 +261,17 @@ out.println(request.getParameter("status"));
                       
                     </li>
               </ol></td>
-      <td bgcolor="#ffffff" valign="top" width="1"><img src="images/dots_ver.gif" height="6" width="1"></td>
+      <td bgcolor="#ffffff" valign="top" width="1"></td>
       
-      <td background="images/dots_ver.gif" bgcolor="#ffffff" valign="top" width="1"><img src="images/dots_ver.gif" height="6" width="1"></td>
+      
       
     </tr>
   </tbody>
 </table>
-          </tr>
-        <tr>
-          <td align="middle" height="1"></td>
-        </tr>
-        <tr bgcolor="#0033ff">
-          <td align="middle" height="3"></td>
-        </tr>
-        <tr bgcolor="#333333">
-          <td align="middle" height="1">
-            </td>
-        </tr>
-        <tr>
-          <td align="middle" height="1">&nbsp;</td>
-        </tr>
+          
+        
       </tbody>
-    </table>   
+       
 
 </body>
 </html>
