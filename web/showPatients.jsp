@@ -51,7 +51,10 @@
                             <th data-sortable="true">Birth date</th>   
                             <th data-sortable="true">Phone number</th> 
                             <th data-sortable="true">Email</th> 
-                            <th data-sortable="true">Symptoms</th> 
+                            <th data-sortable="true">Symptoms</th>
+                            <th data-sortable="true">Bloodgroup</th>
+                            <th data-sortable="true">Weight</th>
+                            <th data-sortable="true">Height</th>
                             <th data-sortable="true">Matter</th> 
                             <th>Remove</th>
                         </tr> 
@@ -70,6 +73,9 @@
                             <td><%= p.getPhone() %></td>
                             <td><%= p.getEmail() %></td>
                             <td><%= p.getSymptoms() %></td>
+                            <td><%= p.getBloodgroup() %></td>
+                            <td><%= p.getWeight() %></td>
+                            <td><%= p.getHeight() %></td>
                             <td><%= p.getMatter() %></td>
                             <td>
                                 <form action="ShowPatientsServlet" method="get">
