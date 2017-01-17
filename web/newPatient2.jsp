@@ -135,6 +135,16 @@ out.println(request.getParameter("status"));
                   <option>Önnestad</option>
                   </select>    </td>
               </tr>
+                          
+                          <tr>
+                            <td><span class="style11 style6"><strong>Phone</strong></span></td>
+                <td><input type="text" name="phone" class="textfield"/></td>
+              </tr>  
+              
+                          <tr>
+                            <td class="style11"><span class="style6"><strong>Email</strong></span></td>
+                <td><input type="text" name="email" class="textfield"/></td>
+              </tr> 
               
                           <tr>
                             <td><span class="style11 style6"><strong>Birthdate</strong></span></td>
@@ -142,16 +152,7 @@ out.println(request.getParameter("status"));
                   <a href="javascript:show_calendar('document.register.bdate', document.register.birthdate.value);"> <img src="images/cal.gif" alt="a" width="18" height="18" border="0"/></a> </td>
               </tr>
                           
-                          <tr>
-                            <td><span class="style11 style6"><strong>Phone</strong></span></td>
-                <td><input type="text" name="phone" class="textfield"/>    </td>
-              </tr>
-              
-                          <tr>
-                            <td class="style11"><span class="style6"><strong>Email</strong></span></td>
-                <td><input type="text" name="email" class="textfield"/></td>
-              </tr>       
-              
+                                      
                           <tr>
                             <td class="style11"><span class="style6"><strong>Symptoms</strong></span></td>
                 <td><input type="text" name="symptoms" class="textfield"/></td>
