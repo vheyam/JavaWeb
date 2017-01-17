@@ -23,7 +23,7 @@ public class PatientBean {
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
     
-    public boolean addPatient(String firstname, String lastname, String phone, String email,
+    public boolean addPatient(String firstname, String lastname, String street, String postcode, String ort, String phone, String email,
             String birthdate, String symptoms, String bloodgroup,String weight, String height, String matter) {
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
@@ -32,6 +32,9 @@ public class PatientBean {
             Patient p = new Patient();
             p.setFirstname(firstname);
             p.setLastname(lastname);
+            p.setStreet(street);
+            p.setPostcode(postcode);
+            p.setOrt(ort);
             p.setPhone(phone);
             p.setEmail(email);
             p.setBirthdate(birthdate);
