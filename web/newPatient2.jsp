@@ -173,49 +173,6 @@ out.println(request.getParameter("status"));
                 <td><input type="text" name="height" class="textfield"/></td>
               </tr>
               
-                           
-                          
-                          
-                          <tr>
-                            <td><span class="style11 style6"><strong>Login Name</strong></span></td>
-                <td><input type="text" name="loginname" />    </td>
-              </tr>
-                          <tr>
-                            <td><span class="style11 style6"><strong>Password</strong></span></td>
-                <td><input name="password" type="password" id="password" onkeyup="testPassword(document.forms.register.password.value);" />    </td>
-              </tr><tr><td></td><td>
-          <a id="Words">Strength:</a></td>
-      <td><table cellpadding=0 cellspacing=0><tr><td height=15  bgcolor=#dddddd></td></tr></table></td>
-
- 
-</tr>
-                          <tr>
-                            <td><span class="style11 style6"><strong> Secret Question </strong></span></td>
-                <td><select name="squest">
-                  <option value="1">What is your favorite pastime?</option>
-                  <option value="2">Who your childhood hero?</option>
-                  <option value="3">What is the name of your first school?</option>
-                  <option value="4">Where did you meet your spouse?</option>
-                  <option value="5">What is your favorite sports team?</option>
-                  <option value="6">What is your father's middle name?</option>
-                  <option value="7">What was your high school mascot?</option>
-                  <option value="8">What make was your first car or bike?</option>
-                  <option value="9">What is your pet's name?</option>
-                  </select></td>
-              </tr>
-                          <tr>
-                            <td colspan="2"><span class="style11 style6"><strong>
-                            <input type="checkbox" name="ch" value="1" onClick="check(register)" />
-                            Own Question </strong></span></td>
-              </tr>
-                          <tr>
-                            <td><span class="style11 style6"><strong>Own Question</strong></span></td>
-                <td><input type="text" name="ownquest" disabled="disabled" />    </td>
-              </tr>
-                          <tr>
-                            <td><span class="style11 style6"><strong>Secret Answer</strong></span></td>
-                <td><input name="sanswer" type="text" /></td>
-              </tr>
                           <tr>
                             <td colspan="2"><div align="center" class="style11 style6"><strong>
                               <input name="Input" type="submit" value="Register" onclick="pinno" />
