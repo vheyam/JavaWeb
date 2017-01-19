@@ -95,7 +95,7 @@ body {
             <noscript>
             </noscript>            <p><align="top" height="10" width="10"><img src="images/clearpixel.gif" height="10" width="10">
             </p>
-                  <div align="center"><strong>Register Form</strong>                               </div>
+                  <div align="center"><strong>New Patient Registration</strong>                               </div>
                   <ol>
                     
                       <form action="NewPatientServlet" method="get" name="register">
