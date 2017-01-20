@@ -24,7 +24,7 @@
     </head>
     <body>
         <!-- Including the navigation bar -->   
-        <jsp:include page="navBar.jsp"/>
+        <jsp:include page="publicNavigationBar.jsp"/>
         
         <div class="container">
             <h1>This is home page</h1>

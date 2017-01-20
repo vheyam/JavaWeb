@@ -56,13 +56,13 @@ public class LoginServlet extends HttpServlet {
             if(valid == true) {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("menu.jsp");
                 rd.forward(request, response);
             }
             else {
                 // wrong credentials print message
                 request.setAttribute("errorMessage", "Wrong credentials");
-                RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 rd.forward(request, response);
             }
     }
