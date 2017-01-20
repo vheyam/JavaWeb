@@ -44,14 +44,11 @@ Contributor(s):
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/prs_db?zeroDateTimeBehavior=convertToNull</property>
-    <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">root</property>
-
+    <property name="hibernate.connection.username">vheyam</property>
+    <property name="hibernate.connection.password">112bad3sp</property>
     <property name="hibernate.show_sql">true</property>
-        
-    <mapping class="objects.Patient"></mapping>
-    <mapping class="objects.Person"></mapping>
-    <mapping class="objects.Schedule"></mapping>
-        
+    <mapping class="objects.Patient"/>
+    <mapping class="objects.Person"/>
+    <mapping class="objects.Schedule"/>
   </session-factory>
 </hibernate-configuration>
