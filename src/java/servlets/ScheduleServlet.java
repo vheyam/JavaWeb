@@ -71,7 +71,7 @@ public class ScheduleServlet extends HttpServlet {
         check(thirteenToFourteen, request, pp, "thirteenToFourteen");
         check(fourteenToFifteen, request, pp, "fourteenToFifteen");
 
-        RequestDispatcher rd = request.getRequestDispatcher("/showSchedule.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("showSchedule.jsp");
         rd.forward(request, response);
     }
 
