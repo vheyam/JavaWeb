@@ -65,7 +65,7 @@ body {
 </head>
     <body leftmargin="0" topmargin="0"> 
         <!-- Including the navigation bar -->   
-        <jsp:include page="navBar.jsp"/>
+        <jsp:include page="adminNavigationBar.jsp"/>
 <table align="left" border="0" cellpadding="3" cellspacing="0" width="952">
   <tbody><tr>
     <td valign="top" width="58"><p align="center">&nbsp;</p>

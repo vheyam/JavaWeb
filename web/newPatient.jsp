@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
             integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -19,7 +20,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
             
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>New Patient</title>
     </head>
     <body>
@@ -29,7 +29,7 @@
             }
         %>
         <!-- Including the navigation bar -->   
-        <jsp:include page="navBar.jsp"/>
+        <jsp:include page="nurseNavigationBar.jsp"/>
         
         <div class="container">
             <h1>new patient</h1>

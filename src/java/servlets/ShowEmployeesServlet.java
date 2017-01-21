@@ -1,24 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package servlets;
 
+import beans.PersonBean;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import beans.PatientBean;
 
 /**
  *
  * @author Rolandas
  */
-public class ShowPatientsServlet extends HttpServlet {
-
+public class ShowEmployeesServlet extends HttpServlet {
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,20 +34,21 @@ public class ShowPatientsServlet extends HttpServlet {
         
         request.removeAttribute("errorDelete");
         String idToDelete = request.getParameter("button");
-        PatientBean pb = new PatientBean();
-        boolean delete = pb.removePatientById(Integer.parseInt(idToDelete));
-      
+        PersonBean pb = new PersonBean();
+        
+        boolean delete = pb.removePersonById(Integer.parseInt(idToDelete));
+        
         if (delete == true) {
-            RequestDispatcher rd = request.getRequestDispatcher("showPatients.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("showEmployees.jsp");
             rd.forward(request, response);
         }
         else {
             request.setAttribute("errorDelete", "Error while deleting");
-            RequestDispatcher rd = request.getRequestDispatcher("showPatients.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("showEmployees.jsp");
             rd.forward(request, response);
         }
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -62,7 +63,7 @@ public class ShowPatientsServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -76,7 +77,7 @@ public class ShowPatientsServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -86,5 +87,5 @@ public class ShowPatientsServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
 }

@@ -4,6 +4,7 @@
     Author     : Rolandas
 --%>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -33,16 +34,13 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Home</a></li>
-                <li><a href="newPatient.jsp">New Patient</a></li>
-                <li><a href="showPatients.jsp">Show Patients</a></li> 
-                <li><a href="showSchedule.jsp">Show Schedule</a></li>
-                <li><a href="schedulePatient.jsp">Schedule Patient</a></li>
+                <li><a href="contacts.jsp">Contacts</a></li>
+                <li><a href="suggestions.jsp">Suggestions</a></li> 
             </ul>
 
             <!-- Right items -->
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="login.jsp">Login</a></li>
-                <li><a href="logout.jsp">Logout</a></li>
             </ul>
         </div>
     </div>

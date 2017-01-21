@@ -10,18 +10,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-            accesskey=""   integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-            
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Show Patients</title>
     </head>
     <body>
@@ -31,31 +21,25 @@
             }
         %>
     <!-- Including the navigation bar -->    
-    <jsp:include page="navBar.jsp"/>
+    <jsp:include page="nurseNavigationBar.jsp"/>
                    
         <div class="container">
             <h3 class="text-center">Patients</h3>      
-            
-            <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css" rel="stylesheet"/>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
             <!-- Table is responsive, on smaller screens it will look alright.-->
             <div class="table-responsive">
-                <table class="table table-hover" data-toggle="table">
-                    <thead>
+                <table id="sortTable" class="table table-hover table-condensed">
+                    <thead class="thead thead-inverse">
                         <tr>
-                            <th data-sortable="true">Id</th>
-                            <th data-sortable="true">First name</th>
-                            <th data-sortable="true">Last name</th>
-                            <th data-sortable="true">Birth date</th>   
-                            <th data-sortable="true">Phone number</th> 
-                            <th data-sortable="true">Email</th> 
-                            <th data-sortable="true">Symptoms</th>
-                            <th data-sortable="true">Bloodgroup</th>
-                            <th data-sortable="true">Weight</th>
-                            <th data-sortable="true">Height</th>
-                            <th data-sortable="true">Matter</th> 
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Birth date</th>   
+                            <th>Phone number</th> 
+                            <th>Email</th> 
+                            <th>Symptoms</th>
+                            <th>Bloodgroup</th>
+                            <th>Weight</th>
+                            <th>Height</th>
+                            <th>Matter</th> 
                             <th>Remove</th>
                         </tr> 
                     </thead>
@@ -66,7 +50,6 @@
                                 Patient p = (Patient) obj;
                         %>
                         <tr>
-                            <td><%= p.getId() %> </td>
                             <td><%= p.getFirstname() %></td>
                             <td><%= p.getLastname() %></td>
                             <td><%= p.getBirthdate() %></td>
@@ -77,16 +60,38 @@
                             <td><%= p.getWeight() %></td>
                             <td><%= p.getHeight() %></td>
                             <td><%= p.getMatter() %></td>
-                            <td>
-                                <form action="ShowPatientsServlet" method="get">
-                                    <button type="submit" name="button" class="btn btn-danger" value=<%= p.getId() %> ></button>
-                                </form>
+                            <td> 
+                                <!-- Trigger the modal with a button -->
+                                <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                </button>      
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">Remove patient</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to remove this patient ?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!-- Call servlet -->
+                                                <form action="ShowPatientsServlet" method="get"> 
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="submit" name="button" class="btn btn-primary" value=<%= p.getId() %>>Yes</button>
+                                                </form> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
                             </td>
                         </tr>
                         <% } %>
                     </tbody>
                 </table>
-            </div>
+            </div>                    
             <!-- Pops alert if delete went wrong-->
             <%
             if (request.getAttribute("errorDelete") != null) {
@@ -99,5 +104,9 @@
             }
             %>               
         </div>
+        <link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script src="scripts/sortingTable.js"></script>
     </body>
 </html>
