@@ -1,14 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package servlets;
 
 import beans.PatientBean;
 import beans.ScheduleBean;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +23,8 @@ import objects.Schedule;
  *
  * @author Rolandas
  */
-public class ScheduleServlet extends HttpServlet {
-
+public class ShowScheduleServlet extends HttpServlet {
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,8 +40,9 @@ public class ScheduleServlet extends HttpServlet {
         
         String date = request.getParameter("date");
         
-        System.out.println("DATE IS: " + date);
-        
+        Date dNow = new Date( );
+        SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
+        request.setAttribute("date", ft.format(dNow));
         int eightToNine = 0;
         int nineToTen = 0;
         int tenToEleven = 0;
@@ -48,33 +51,48 @@ public class ScheduleServlet extends HttpServlet {
         int fourteenToFifteen = 0;
         
         ScheduleBean pb = new ScheduleBean();
+        
         for (Object obj : pb.getScheduleList()) {
             Schedule s = (Schedule) obj;
-            if (date.equals(s.getDate())) {
-                eightToNine = s.getEightToNine();
-                nineToTen = s.getNineToTen();
-                tenToEleven = s.getTenToEleven();
-                elevenToTwelve = s.getElevenToTwelve();
-                thirteenToFourteen = s.getThirteenToFourteen();
-                fourteenToFifteen = s.getFourteenToFifteen();
-                break;
+            if (date != null){
+                request.setAttribute("date", date);
+                if (date.equals(s.getDate())) {
+                    eightToNine = s.getEightToNine();
+                    nineToTen = s.getNineToTen();
+                    tenToEleven = s.getTenToEleven();
+                    elevenToTwelve = s.getElevenToTwelve();
+                    thirteenToFourteen = s.getThirteenToFourteen();
+                    fourteenToFifteen = s.getFourteenToFifteen();
+                    break;
+                }
+            }
+            else {
+                if (ft.format(dNow).equals(s.getDate())) {
+                    eightToNine = s.getEightToNine();
+                    nineToTen = s.getNineToTen();
+                    tenToEleven = s.getTenToEleven();
+                    elevenToTwelve = s.getElevenToTwelve();
+                    thirteenToFourteen = s.getThirteenToFourteen();
+                    fourteenToFifteen = s.getFourteenToFifteen();
+                    break;
+                }
+                
             }
         }
-
+        
         PatientBean pp = new PatientBean();
-      
-        request.setAttribute("date", date);
+        
         check(eightToNine, request, pp, "eightToNine");
         check(nineToTen, request, pp, "nineToTen");
         check(tenToEleven, request, pp, "tenToEleven");
         check(elevenToTwelve, request, pp, "elevenToTwelve");
         check(thirteenToFourteen, request, pp, "thirteenToFourteen");
         check(fourteenToFifteen, request, pp, "fourteenToFifteen");
-
+        
         RequestDispatcher rd = request.getRequestDispatcher("showSchedule.jsp");
         rd.forward(request, response);
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -89,7 +107,7 @@ public class ScheduleServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -103,7 +121,7 @@ public class ScheduleServlet extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -113,11 +131,11 @@ public class ScheduleServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
     public void check(int timeSlot, HttpServletRequest request, PatientBean pp, String attributeName) {
         Patient patient = pp.getPatientDataFromId(timeSlot);
         if (timeSlot !=0) {
-            request.setAttribute(attributeName, patient.getFirstname() + " " + patient.getLastname()); 
+            request.setAttribute(attributeName, patient.getFirstname() + " " + patient.getLastname());
         }
         else {
             request.setAttribute(attributeName, timeSlot);

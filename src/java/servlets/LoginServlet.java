@@ -35,10 +35,11 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String button = request.getParameter("button");
-        if ("login".equals(button)) {
+        if ("Login".equals(button)) {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-            
+            System.out.println("THE USERNAME IS THIS: " + username);
+            System.out.println("THE PASWORD IS THIS: " + password);
             PersonBean person = new PersonBean();
             boolean valid = false;
             

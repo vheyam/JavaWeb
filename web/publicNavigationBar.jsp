@@ -35,7 +35,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.jsp">Home</a></li>
                 <li><a href="contacts.jsp">Contacts</a></li>
-                <li><a href="suggestions.jsp">Suggestions</a></li> 
             </ul>
 
             <!-- Right items -->

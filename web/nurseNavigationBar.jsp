@@ -36,7 +36,7 @@
                 <li><a href="menu.jsp">Home</a></li>
                 <li><a href="newPatient.jsp">New Patient</a></li>
                 <li><a href="showPatients.jsp">Show Patients</a></li> 
-                <li><a href="showSchedule.jsp">Show Schedule</a></li>
+                <li><a href="ShowScheduleServlet">Show Schedule</a></li>
                 <li><a href="schedulePatient.jsp">Schedule Patient</a></li>
             </ul>
 

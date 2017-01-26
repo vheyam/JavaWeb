@@ -5,6 +5,7 @@
  */
 package objects;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "person")
-public class Person {
+public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
@@ -28,7 +29,7 @@ public class Person {
     private String username;
     @Column(name = "Password")
     private String password;
-    @Column(name = "Firstname")
+    @Column(name = "Firstname") 
     private String firstname;
     @Column(name = "Lastname")
     private String lastname;
