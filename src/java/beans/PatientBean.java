@@ -114,4 +114,25 @@ public class PatientBean {
         }
         return patient;
     }
+    
+        public Patient updatePatientData(int id, boolean isScheduled) {
+        Patient patient = new Patient();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            
+            patient = (Patient) session.load(Patient.class, id);
+  
+            patient.setIsScheduled(true);
+            session.update(patient);
+            session.getTransaction().commit();
+            
+            session.flush();
+            session.close();
+        } catch(HibernateException he) {
+            he.printStackTrace();
+        }
+        return patient;
+    }
+    
 }

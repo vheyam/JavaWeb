@@ -28,7 +28,7 @@
             <!-- Table is responsive, on smaller screens it will look alright.-->
             <div class="table-responsive">
                 <table id="sortTable" class="table table-hover table-condensed">
-                    <thead class="thead thead-inverse">
+                    <thead>
                         <tr>
                             <th>First name</th>
                             <th>Last name</th>
@@ -88,7 +88,7 @@
                                 </div> 
                             </td>
                         </tr>
-                        <% } %>
+                        <%  } %>
                     </tbody>
                 </table>
             </div>                    

@@ -11,16 +11,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-            accesskey=""   integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
         <title>Schedule</title>
     </head>
     <body>
@@ -35,10 +26,31 @@
         
         <div class="container">
             <h3 class="text-center">Schedule</h3>
-       
-            <!-- Including the date picker jsp-->
-            <jsp:include page="datePicker.jsp"/>
             
+            <!-- date picker -->
+            <style>
+                .bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p,
+                .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button,
+                .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}
+            </style>
+            <div class="bootstrap-iso">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <form action="ShowScheduleServlet" method="get">
+                                <div class="form-group ">
+                                    <label class="control-label " for="date">
+                                        Choose Date
+                                    </label>
+                                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text" autocomplete="off" required/>
+                                </div>
+                                <input type="submit" name="button" value="submit" class="btn btn-primary">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Schedule / table -->
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -65,6 +77,14 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div>               
+        <!-- Include jQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+            
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+            
+        <script src="scripts/datePicker.js"></script>
     </body>
 </html>
