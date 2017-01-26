@@ -57,7 +57,7 @@ MM_reloadPage(true);
                    <div class="container">
                    <h3 class="text-center">Patient Registration</h3> 
                   
-                    
+                    <div class="form-area"> 
                       <form action="NewPatientServlet" method="get" name="register">
                         
                         <table border="0" align="center">
@@ -87,12 +87,12 @@ out.println(request.getParameter("status"));
               
                           <tr>
                             <td class="style11"><span class="style6"><strong>Ort</strong></span></td>
-                <td><input type="text" name="ort" class="textfield"/></td>
+                         <td> <div class="form-group"><input type="text" name="ort" class="form-control"/></div></td>
               </tr> 
                           
                           <tr>
                             <td><span class="style11 style6"><strong>Phone</strong></span></td>
-                <td><input type="text" name="phone" class="textfield"/></td>
+                            <td><div class="form-group"><input type="text" name="phone" class="form-control"/></div></td>
               </tr>  
               
                           <tr>
@@ -127,12 +127,21 @@ out.println(request.getParameter("status"));
                             
                             <td><span class="style11 style6"><strong>Symptoms</strong></span></td>
                 <td><div class ="col-xl-3"><select multiple class="form-control" name="symptoms">
-                <option>select</option>
-                  <option>Kristianstad</option>
-                  <option>Ahus</option>
-                  <option>Norra Asum</option>
-                  <option>Önnestad</option>
-                  </select>   </div> </td>
+                  <option>temperature</option>
+                  <option>vomitting</option>
+                  <option>diarrhoea</option>
+                  <option>rash</option>
+                  <option>chestpain</option>
+                  <option>nausea</option>
+                  <option>haemorrhaging</option>
+                  <option>endemic country visited</option>
+                  <option>burns</option>
+                  <option>movement of limbs</option>
+                  <option>constipation</option>
+                  <option>breathing problems</option>
+                  <option>pain</option>
+                  <option>headache</option>
+                                  </select>   </div> </td>
               </tr>
                         <br>
                           <tr>
@@ -142,6 +151,7 @@ out.println(request.getParameter("status"));
                         </tr>
                         </table>
                       </form>  
+                    </div>
          <script language="JavaScript" type="text/javascript">
 //You should create the validator only after the definition of the HTML form
   var frmvalidator  = new Validator("register");
@@ -154,18 +164,21 @@ out.println(request.getParameter("status"));
   frmvalidator.addValidation("lastname","req","Please enter your Last Name");
   frmvalidator.addValidation("lastname","maxlen=20","Max length is 20");
   frmvalidator.addValidation("lastname","alpha"," Last Name Alphabetic chars only");
-  
-  frmvalidator.addValidation("birthdate","req","Please enter your DOB"); 
-  frmvalidator.addValidation("postcode");
-  frmvalidator.addValidation("ort","dontselect=0");
+  frmvalidator.addValidation("street","req","Please enter street")
+  frmvalidator.addValidation("postcode","req","Please enter postcode","maxlen=5","numeric");
+  frmvalidator.addValidation("ort","alpha","req","Last Name Alphabetic chars only");
   frmvalidator.addValidation("phone","req");
-  
   frmvalidator.addValidation("phone","maxlen=50");
   frmvalidator.addValidation("phone","numeric");
   frmvalidator.addValidation("phone","Phone");
   frmvalidator.addValidation("email","maxlen=50");
   frmvalidator.addValidation("email","req");
   frmvalidator.addValidation("email","email");
+  frmvalidator.addValidation("birthdate","req","Please enter your DOB"); 
+  frmvalidator.addValidation("bloodgroup","alpha");
+  frmvalidator.addValidation("weight","numeric");
+  frmvalidator.addValidation("height","numeric","maxlen=3")
+  frmvalidator.addValidation("symptoms","dontselect=0","req","Please enter patients symptoms")
  
    
      
