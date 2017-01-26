@@ -33,6 +33,10 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>NewPerson</servlet-name>
+        <servlet-class>servlets.NewPersonServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -64,6 +68,10 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewPerson</servlet-name>
+        <url-pattern>/NewPerson</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
