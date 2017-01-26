@@ -17,8 +17,8 @@
         <servlet-class>servlets.ShowPatientsServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ScheduleServlet</servlet-name>
-        <servlet-class>servlets.ScheduleServlet</servlet-class>
+        <servlet-name>ShowScheduleServlet</servlet-name>
+        <servlet-class>servlets.ShowScheduleServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContactServlet</servlet-name>
@@ -32,6 +32,10 @@
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>ScheduleNewPatientServlet</servlet-name>
+        <servlet-class>servlets.ScheduleNewPatientServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>NewPerson</servlet-name>
@@ -54,8 +58,8 @@
         <url-pattern>/ShowPatientsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ScheduleServlet</servlet-name>
-        <url-pattern>/ScheduleServlet</url-pattern>
+        <servlet-name>ShowScheduleServlet</servlet-name>
+        <url-pattern>/ShowScheduleServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ContactServlet</servlet-name>
@@ -70,8 +74,8 @@
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NewPerson</servlet-name>
-        <url-pattern>/NewPerson</url-pattern>
+        <servlet-name>ScheduleNewPatientServlet</servlet-name>
+        <url-pattern>/ScheduleNewPatientServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
