@@ -21,7 +21,7 @@
                 <div class="col-md-6"> 
                     <!-- Contact Us form -->
                     <div class="form-area">  
-                        <form role="form">
+                        <form action="ContactsServlet" method="get">
                             <h3 style="margin-bottom: 15px; text-align: center;">Contact Us</h3>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name" autocomplete="off" required>
@@ -36,7 +36,7 @@
                                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" autocomplete="off" required>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="240" rows="4" autocomplete="off"></textarea>
+                                <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" maxlength="240" rows="4" autocomplete="off"></textarea>
                                 <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>                    
                             </div>
                             <button type="submit" id="submit" name="submit" class="btn btn-primary pull-right">Submit</button>

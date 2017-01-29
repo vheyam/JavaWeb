@@ -49,32 +49,32 @@
                             </div>
                         </div>
                     </div> 
-                    
+                    <br>
                     <%
                         if (null != request.getAttribute("message")) {            
                     %>
                     <div class="alert alert-info alert-dismissable fade in">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Info!</strong> Patient has been scheduled.
+                        <strong>Info!</strong> <%= request.getAttribute("message") %>
                     </div>
                     <%  } 
                         if (null != request.getAttribute("errorMessage")) {            
                     %>
                     <div class="alert alert-warning alert-dismissable fade in">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Warning!</strong> Patient was not scheduled, try again.
+                        <strong>Warning!</strong> <%= request.getAttribute("errorMessage") %>
                     </div>
                     <%  } %>
                 </div>  
                 
                 <div class="col-md-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Guide</div>
+                        <div class="panel-heading"><strong>Guide</strong></div>
                         <div class="panel-body">
                             <ul class="list-group">
                                 <li class="list-group-item">Select the date you wish to schedule a patient.</li>
                                 <li class="list-group-item">Patient will be scheduled in available slot if there are any.</li>
-                                <li class="list-group-item">If it was not scheduled an alert will pop up.</li>
+                                <li class="list-group-item">If something else happened an alert will pop up notifying about the issue.</li>
                             </ul>                         
                         </div>
                     </div>

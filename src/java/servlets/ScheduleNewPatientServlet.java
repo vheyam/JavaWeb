@@ -60,6 +60,7 @@ public class ScheduleNewPatientServlet extends HttpServlet {
             }
         }
         
+        boolean isEmpty = false;
         int idToAdd = 0;
         // check if list is not empty
         if (!notScheduledUrgent.isEmpty()) {
@@ -69,92 +70,101 @@ public class ScheduleNewPatientServlet extends HttpServlet {
         else if (!notScheduledNotUrgent.isEmpty()) {
             idToAdd = notScheduledNotUrgent.get(0).getId();
         }
+        // Both lists are empty.
+        else {
+            isEmpty = true;
+        }
         
         
         ScheduleBean sb = new ScheduleBean();
         List eSlotList = sb.getEmptySlotsForSpecificDay(value);
-        // if size is 6 that means entry is not in database
-        if(eSlotList.size() == 6) {
-            String slotToFill = eSlotList.get(0).toString();
-            
-            switch(slotToFill) {
-                case "8-9":
-                    System.out.println("THE EMPTY SLOT IS this: 8-9" );
-                    sb.addSchedule(value, idToAdd, 0, 0, 0, 0, 0);
-                    break;
-                case "9-10":
-                    System.out.println("THE EMPTY SLOT IS this: 9-10");
-                    sb.addSchedule(value, 0, idToAdd, 0, 0, 0, 0);
-                    break;
-                case "10-11":
-                    System.out.println("THE EMPTY SLOT IS this: 10-11");
-                    sb.addSchedule(value, 0, 0, idToAdd, 0, 0, 0);
-                    break;
-                case "11-12":
-                    System.out.println("THE EMPTY SLOT IS this: 11-12");
-                    sb.addSchedule(value, 0, 0, 0, idToAdd, 0, 0);
-                    break;
-                case "13-14":
-                    System.out.println("THE EMPTY SLOT IS this: 13-14");
-                    sb.addSchedule(value, 0, 0, 0, 0, idToAdd, 0);
-                    break;
-                case "14-15":
-                    System.out.println("THE EMPTY SLOT IS this: 14-15");
-                    sb.addSchedule(value, 0, 0, 0, 0, 0, idToAdd);
-                    break;
+        // Check if patient lists are not empty
+        if (isEmpty == false) {
+            // if size is 6 that means entry is not in database
+            if(eSlotList.size() == 6) {
+                String slotToFill = eSlotList.get(0).toString();
+                
+                switch(slotToFill) {
+                    case "8-9":
+                        System.out.println("THE EMPTY SLOT IS this: 8-9" );
+                        sb.addSchedule(value, idToAdd, 0, 0, 0, 0, 0);
+                        break;
+                    case "9-10":
+                        System.out.println("THE EMPTY SLOT IS this: 9-10");
+                        sb.addSchedule(value, 0, idToAdd, 0, 0, 0, 0);
+                        break;
+                    case "10-11":
+                        System.out.println("THE EMPTY SLOT IS this: 10-11");
+                        sb.addSchedule(value, 0, 0, idToAdd, 0, 0, 0);
+                        break;
+                    case "11-12":
+                        System.out.println("THE EMPTY SLOT IS this: 11-12");
+                        sb.addSchedule(value, 0, 0, 0, idToAdd, 0, 0);
+                        break;
+                    case "13-14":
+                        System.out.println("THE EMPTY SLOT IS this: 13-14");
+                        sb.addSchedule(value, 0, 0, 0, 0, idToAdd, 0);
+                        break;
+                    case "14-15":
+                        System.out.println("THE EMPTY SLOT IS this: 14-15");
+                        sb.addSchedule(value, 0, 0, 0, 0, 0, idToAdd);
+                        break;
+                }
+                request.setAttribute("message", "Patient has been scheduled");
+                pb.updatePatientData(idToAdd, true);
             }
-            request.setAttribute("message", "Patient has been scheduled");
-            pb.updatePatientData(idToAdd, true);
-        }
-        // List is not empty and it is in database
-        else if (!eSlotList.isEmpty()) {
-            String slotToFill = eSlotList.get(0).toString();
-            for (Object obj : sb.getScheduleList()) {
-                Schedule s = (Schedule) obj;
-                if (s.getDate().equals(value)) {
-                    switch(slotToFill) {
-                        case "8-9":
-                            System.out.println("THE EMPTY SLOT IS this: 8-9" );
-                            sb.updateSchedule(s.getId(), value, idToAdd, s.getNineToTen(), s.getTenToEleven(),
-                                    s.getElevenToTwelve(), s.getThirteenToFourteen(), s.getFourteenToFifteen());
-                            break;
-                        case "9-10":
-                            System.out.println("THE EMPTY SLOT IS this: 9-10");
-                            sb.updateSchedule(s.getId(), value, s.getEightToNine(), idToAdd, s.getTenToEleven(),
-                                    s.getElevenToTwelve(), s.getThirteenToFourteen(), s.getFourteenToFifteen());
-                            break;
-                        case "10-11":
-                            System.out.println("THE EMPTY SLOT IS this: 10-11");
-                            sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), idToAdd,
-                                    s.getElevenToTwelve(), s.getThirteenToFourteen(), s.getFourteenToFifteen());
-                            break;
-                        case "11-12":
-                            System.out.println("THE EMPTY SLOT IS this: 11-12");
-                            sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), s.getTenToEleven(),
-                                    idToAdd, s.getThirteenToFourteen(), s.getFourteenToFifteen());
-                            break;
-                        case "13-14":
-                            System.out.println("THE EMPTY SLOT IS this: 13-14");
-                            sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), s.getTenToEleven(),
-                                    s.getElevenToTwelve(), idToAdd, s.getFourteenToFifteen());
-                            break;
-                        case "14-15":
-                            System.out.println("THE EMPTY SLOT IS this: 14-15");
-                            sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), s.getTenToEleven(),
-                                    s.getElevenToTwelve(), s.getThirteenToFourteen(), idToAdd);
-                            break;
+            // List is not empty and it is in database
+            else if (!eSlotList.isEmpty()) {
+                String slotToFill = eSlotList.get(0).toString();
+                for (Object obj : sb.getScheduleList()) {
+                    Schedule s = (Schedule) obj;
+                    if (s.getDate().equals(value)) {
+                        switch(slotToFill) {
+                            case "8-9":
+                                System.out.println("THE EMPTY SLOT IS this: 8-9" );
+                                sb.updateSchedule(s.getId(), value, idToAdd, s.getNineToTen(), s.getTenToEleven(),
+                                        s.getElevenToTwelve(), s.getThirteenToFourteen(), s.getFourteenToFifteen());
+                                break;
+                            case "9-10":
+                                System.out.println("THE EMPTY SLOT IS this: 9-10");
+                                sb.updateSchedule(s.getId(), value, s.getEightToNine(), idToAdd, s.getTenToEleven(),
+                                        s.getElevenToTwelve(), s.getThirteenToFourteen(), s.getFourteenToFifteen());
+                                break;
+                            case "10-11":
+                                System.out.println("THE EMPTY SLOT IS this: 10-11");
+                                sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), idToAdd,
+                                        s.getElevenToTwelve(), s.getThirteenToFourteen(), s.getFourteenToFifteen());
+                                break;
+                            case "11-12":
+                                System.out.println("THE EMPTY SLOT IS this: 11-12");
+                                sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), s.getTenToEleven(),
+                                        idToAdd, s.getThirteenToFourteen(), s.getFourteenToFifteen());
+                                break;
+                            case "13-14":
+                                System.out.println("THE EMPTY SLOT IS this: 13-14");
+                                sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), s.getTenToEleven(),
+                                        s.getElevenToTwelve(), idToAdd, s.getFourteenToFifteen());
+                                break;
+                            case "14-15":
+                                System.out.println("THE EMPTY SLOT IS this: 14-15");
+                                sb.updateSchedule(s.getId(), value, s.getEightToNine(), s.getNineToTen(), s.getTenToEleven(),
+                                        s.getElevenToTwelve(), s.getThirteenToFourteen(), idToAdd);
+                                break;
+                        }
+                        request.setAttribute("message", "Patient has been scheduled");
+                        pb.updatePatientData(idToAdd, true);
+                        break;
                     }
-                    request.setAttribute("message", "Patient has been scheduled");
-                    pb.updatePatientData(idToAdd, true);
-                    break;
                 }
             }
+            // List is empty, no available slots for this specific date
+            else {
+                //TO DO:
+                request.setAttribute("errorMessage", "Patient was not scheduled, try again");
+            }
         }
-        // List is empty, no available slots for this specific date
         else {
-           //TO DO: 
-            request.setAttribute("errorMessage", "Patient was not scheduled, try again");
-
+            request.setAttribute("errorMessage", "All patients are scheduled, try again later");
         }
   
         RequestDispatcher rd = request.getRequestDispatcher("schedulePatient.jsp");

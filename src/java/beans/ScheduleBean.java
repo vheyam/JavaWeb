@@ -153,7 +153,7 @@ public class ScheduleBean {
             }
         }
         // entry does not exist in database
-        else {
+        else if (!date.isEmpty()){
             list.add("8-9");
             list.add("9-10");
             list.add("10-11");
